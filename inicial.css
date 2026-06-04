@@ -3,19 +3,63 @@
     justify-content: center;
 }
 
+.nav-bar {
+    justify-content: flex-end;
+    align-content: center;
+
+
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+
+}
+
 .hero-badge {
+    font-size: 18px;
+    color: #0063f7;
+    margin-bottom: 20px;
 
 }
 
-.p{
+.btn-primary {
+    background-color: #0063f7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 10px;
 
 }
 
-.hero-bnts{
+.btn-outline {
+    background-color: transparent;
+    color: #0063f7  ;
+    padding: 10px 20px;
+    border: 2px solid #0063f7;
+    border-radius: 5px;
+    text-decoration: none;
 
 }
 
-.contato {
+.contato-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.p {
+    font-size: 18px;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto;
 
 }
 
