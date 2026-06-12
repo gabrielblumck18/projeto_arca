@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programa Arca – Animais Resgatados, Cuidados e Acolhidos</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Estilos customizados -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-arca" id="navbar">
+  <div class="container-xl">
+    <div class="nav-logo" data-page="home">
+      <img src="img/logo.png" alt="Programa Arca" class="nav-logo-img" />
+    </div>
+
+    <!-- Botão hamburguer (mobile) -->
+    <button class="navbar-toggler-arca" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Links desktop -->
+    <ul class="nav-links d-none d-lg-flex" id="navLinksDesktop">
+      <li><a href="#" class="nav-link" data-page="castracao">CASTRAÇÃO</a></li>
+      <li><a href="#" class="nav-link" data-page="resgate">RESGATE</a></li>
+      <li><a href="#" class="nav-link" data-page="adocao">ADOÇÃO</a></li>
+      <li><a href="#" class="nav-link" data-page="acompanhamento">ACOMPANHAMENTO</a></li>
+      <li><a href="#" class="nav-link nav-denuncia" data-page="denuncia">DENÚNCIA</a></li>
+    </ul>
+  </div>
+
+  <!-- Menu mobile (offcanvas) -->
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <div class="nav-mobile-header">
+      <img src="img/logo.png" alt="Programa Arca" style="height:40px;" />
+      <button class="nav-mobile-close" id="navClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul class="nav-mobile-links">
+      <li><a href="#" class="nav-link nav-mobile-item" data-page="home"><i class="fa-solid fa-house"></i> Início</a></li>
+      <li><a href="#" class="nav-link nav-mobile-item" data-page="castracao"><i class="fa-solid fa-scissors"></i> Castração</a></li>
+      <li><a href="#" class="nav-link nav-mobile-item" data-page="resgate"><i class="fa-solid fa-truck-medical"></i> Resgate</a></li>
+      <li><a href="#" class="nav-link nav-mobile-item" data-page="adocao"><i class="fa-solid fa-heart"></i> Adoção</a></li>
+      <li><a href="#" class="nav-link nav-mobile-item" data-page="acompanhamento"><i class="fa-solid fa-clipboard-list"></i> Acompanhamento</a></li>
+      <li><a href="#" class="nav-link nav-mobile-item nav-mobile-denuncia" data-page="denuncia"><i class="fa-solid fa-shield-halved"></i> Denúncia</a></li>
+    </ul>
+  </div>
+  <div class="nav-mobile-overlay" id="navOverlay"></div>
+</nav>
+
+<!-- ===================== LOGIN ===================== -->
+<div class="page" id="page-login">
+  <div class="login-layout">
+    <div class="login-left d-none d-md-flex">
+      <div class="login-left-content">
+        <div class="login-logo">
+          <img src="img/logo.png" alt="Programa Arca" style="height: 56px; width: auto;"/>
+        </div>
+        <h1 class="login-title">Um lar seguro<br>para quem<br><em>merece amor</em></h1>
+        <p class="login-desc">A Arca conecta animais em situacao de risco a familias amorosas. Resgatamos, cuidamos e encontramos lares para quem mais precisa de uma segunda chance.</p>
+        <div class="login-pets-img">
+          <img src="img/caoegato.png" alt="Cachorro e Gato" />
+        </div>
+        <div class="login-hearts">
+          <i class="fa-solid fa-heart login-heart-icon"></i>
+          <i class="fa-regular fa-heart login-heart-icon small"></i>
+        </div>
+        <div class="login-paws">
+          <i class="fa-solid fa-paw login-paw-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="login-card">
+
+        <!-- Logo visível só no mobile -->
+        <div class="d-flex d-md-none justify-content-center mb-3">
+          <img src="img/logo.png" alt="Programa Arca" style="height:48px;" />
+        </div>
+        <div class="login-card-icon">
+          <i class="fa-solid fa-paw"></i>
+        </div>
+        <h2>Faca seu login</h2>
+        <p>Entre na sua conta para continuar ajudando os animais.</p>
+        <div class="login-form">
+          <div class="form-group">
+            <label>E-mail</label>
+            <div class="input-icon-wrap">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" placeholder="seu@email.com" id="login-email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <div class="input-icon-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Digite sua senha" id="login-senha" />
+              <i class="fa-regular fa-eye eye-toggle" id="toggle-senha"></i>
+            </div>
+          </div>
+          <div id="login-erro" style="display:none; color:#e53e3e; font-size:13px; background:#fff5f5; border:1px solid #fed7d7; border-radius:8px; padding:10px 12px;">
+            <i class="fa-solid fa-circle-exclamation"></i> <span id="login-erro-msg">E-mail ou senha inválidos.</span>
+          </div>
+          <div class="login-options">
+            <label class="checkbox-label">
+              <input type="checkbox" checked/> Lembrar de mim
+            </label>
+            <a href="#" class="link-forgot" onclick="abrirEsqueciSenha(); return false;">Esqueci minha senha</a>
+          </div>
+          <button class="btn-primary full" onclick="fazerLogin()">Entrar</button>
+          <div class="login-divider"><span>ou continue com</span></div>
+          <button class="btn-social" onclick="loginSocial()"><i class="fa-brands fa-google"></i> Continuar com Google</button>
+          <button class="btn-social facebook" onclick="loginSocial()"><i class="fa-brands fa-facebook"></i> Continuar com Facebook</button>
+          <p class="login-register">Ainda não tem uma conta? <a href="#" class="link-register" onclick="goToPage('cadastro')">Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HOME ===================== -->
+<div class="page hidden" id="page-home">
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="hero-badge"><span class="badge-dot"></span> PROTEÇÃO ANIMAL ATIVA</div>
+        <h1 class="hero-title">Um lar seguro<br>para quem<br><em>merece</em> <strong>amor</strong></h1>
+        <p class="hero-desc">A Arca conecta animais em situação de risco a famílias amorosas. Resgatamos, cuidamos e encontramos lares para quem mais precisa de uma segunda chance.</p>
+        <div class="hero-buttons">
+          <button class="btn-hero-primary" data-page="adocao"><i class="fa-solid fa-star"></i> Quero adotar</button>
+          <button class="btn-hero-secondary" data-page="resgate">Solicitar resgate <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <i class="fa-solid fa-plus-square"></i>
+            <div><strong>1500+</strong><span>Resgatados</span></div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-heart"></i>
+            <div><strong>800+</strong><span>Adoções</span></div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-users"></i>
+            <div><strong>500+</strong><span>Voluntários</span></div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-shield"></i>
+            <div><strong>100%</strong><span>Proteção</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card-animal">
+          <div class="hero-card-img">
+            <img src="img/golden1.png" alt="Luke" id="hero-animal-img" />
+            <button class="hero-nav-btn prev" id="hero-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero-nav-btn next" id="hero-next"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="hero-dots">
+              <span class="hero-dot active"></span>
+              <span class="hero-dot"></span>
+              <span class="hero-dot"></span>
+            </div>
+          </div>
+          <div class="hero-animal-info">
+            <h3 id="hero-animal-name">LUKE</h3>
+            <p id="hero-animal-breed"><em>Golden Retriever</em></p>
+            <button class="btn-adopt-hero" id="hero-adopt-btn"><i class="fa-solid fa-heart"></i> Adotar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== CASTRAÇÃO ===================== -->
+<div class="page hidden" id="page-castracao">
+  <div class="page-content">
+    <div class="form-page-layout">
+      <div class="form-main-area">
+        <div class="form-header">
+          <div class="form-header-icon castracao-icon">
+            <i class="fa-solid fa-scissors"></i>
+          </div>
+          <div>
+            <h2>Solicitar castramento</h2>
+            <p>Preencha os dados do seu animal para solicitar o castramento.<br>Nossa equipe analisará sua solicitação e entrará em contato.</p>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3 class="section-title">Dados do animal</h3>
+          <div class="animal-photo-row">
+            <div class="animal-photo-box">
+              <img src="img/pata_azul.jpg" alt="Animal" id="castracao-preview" />
+            </div>
+            <div class="animal-fields">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Nome do animal <span class="req">*</span></label>
+                  <input type="text" placeholder="Digite o nome do animal" id="cast-nome-animal" />
+                </div>
+                <div class="form-group">
+                  <label>Espécie <span class="req">*</span></label>
+                  <select id="cast-especie">
+                    <option value="">Selecione</option>
+                    <option>Cão</option>
+                    <option>Gato</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Idade aproximada</label>
+                  <input type="text" placeholder="Ex: 2 anos" id="cast-idade" />
+                </div>
+                <div class="form-group">
+                  <label>Sexo <span class="req">*</span></label>
+                  <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="sexo-cast" value="Macho" /> Macho</label>
+                    <label class="radio-label"><input type="radio" name="sexo-cast" value="Fêmea" /> Fêmea</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Porte <span class="req">*</span></label>
+                  <select id="cast-porte">
+                    <option value="">Selecione</option>
+                    <option>Pequeno</option>
+                    <option>Médio</option>
+                    <option>Grande</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Peso aproximado (kg)</label>
+                  <input type="text" placeholder="Ex: 15" id="cast-peso" />
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Raça (se souber)</label>
+                  <input type="text" placeholder="Ex: SRD, Labrador, etc." id="cast-raca" />
+                </div>
+                <div class="form-group">
+                  <label>Cor / Pelagem</label>
+                  <input type="text" placeholder="Ex: Caramelo" id="cast-cor" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-title" style="margin-top:24px">Dados do responsável</h3>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>Nome completo <span class="req">*</span></label>
+              <input type="text" placeholder="Digite seu nome completo" id="cast-nome-resp" />
+            </div>
+            <div class="form-group">
+              <label>Telefone / WhatsApp <span class="req">*</span></label>
+              <input type="text" placeholder="(27) 99999-9999" id="cast-tel" />
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" placeholder="Digite seu e-mail" id="cast-email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Endereço <span class="req">*</span></label>
+            <input type="text" placeholder="Digite seu endereço completo" id="cast-endereco" />
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>Bairro <span class="req">*</span></label>
+              <input type="text" placeholder="Digite o bairro" id="cast-bairro" />
+            </div>
+            <div class="form-group">
+              <label>Município <span class="req">*</span></label>
+              <select id="cast-municipio">
+                <option>Vitória</option>
+                <option>Vila Velha</option>
+                <option>Serra</option>
+                <option>Cariacica</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Estado <span class="req">*</span></label>
+              <select id="cast-estado">
+                <option>ES</option>
+                <option>SP</option>
+                <option>RJ</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="section-title" style="margin-top:24px">Informações adicionais</h3>
+          <p class="section-sub">Conte-nos algo importante sobre seu animal (comportamento, saúde, histórico, etc.)</p>
+          <textarea placeholder="Digite aqui..."></textarea>
+
+          <div class="form-submit">
+            <button class="btn-primary" onclick="showConfirmacao('castracao')"><i class="fa-solid fa-paper-plane"></i> Enviar solicitação</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-it-works">
+        <h4>Como funciona?</h4>
+        <div class="step">
+          <div class="step-icon castracao-icon"><i class="fa-solid fa-scissors"></i></div>
+          <div><strong>1. Solicitação</strong><p>Preencha os dados do seu animal e envie a solicitação.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-icon castracao-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div><strong>2. Análise</strong><p>Nossa equipe analisará as informações.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-icon castracao-icon"><i class="fa-solid fa-calendar"></i></div>
+          <div><strong>3. Agendamento</strong><p>Entraremos em contato para agendar o procedimento.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-icon castracao-icon"><i class="fa-solid fa-scissors"></i></div>
+          <div><strong>4. Procedimento</strong><p>Realização do castramento com segurança e cuidado.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-icon castracao-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div><strong>5. Pós-operatório</strong><p>Orientações para recuperação e bem-estar.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== RESGATE ===================== -->
+<div class="page hidden" id="page-resgate">
+  <div class="page-content centered-form">
+    <div class="form-center-header">
+      <div class="form-header-icon resgate-icon">
+        <i class="fa-solid fa-truck-medical"></i>
+      </div>
+      <h2>Solicitar resgate</h2>
+      <p>Preencha as informações abaixo para solicitar ajuda.<br>Nossa equipe entrará em contato o mais breve possível.</p>
+    </div>
+
+    <div class="form-card wide">
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Seu nome completo</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" placeholder="Digite seu nome completo" id="resgate-nome" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Telefone para contato</label>
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" placeholder="(11) 98765-4321" id="resgate-tel" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <div class="input-icon-wrap">
+          <i class="fa-regular fa-envelope"></i>
+          <input type="email" placeholder="seu@email.com" id="resgate-email" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Endereço do local do resgate</label>
+        <div class="input-icon-wrap">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" placeholder="Rua, número, bairro, cidade, estado" id="resgate-endereco" />
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Tipo de situação</label>
+          <select id="resgate-tipo">
+            <option value="">Selecione o tipo de situação</option>
+            <option>Abandono</option>
+            <option>Maus-tratos</option>
+            <option>Animal ferido</option>
+            <option>Animal perdido</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Descrição da situação</label>
+          <select id="resgate-urgencia">
+            <option value="">Selecione uma opção</option>
+            <option>Urgente</option>
+            <option>Moderado</option>
+            <option>Baixo risco</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Descreva com detalhes a situação do animal</label>
+        <textarea placeholder="Conte o que aconteceu, onde está o animal, se há ferimentos, comportamento, etc." maxlength="500" id="resgate-desc"></textarea>
+        <div class="char-count"><span id="resgate-count">0</span>/500</div>
+      </div>
+      <div class="form-group">
+        <label>Anexar fotos (opcional)</label>
+        <div class="upload-box">
+          <i class="fa-regular fa-image"></i>
+          <span>Clique para adicionar fotos</span>
+          <small>Formatos: JPG, PNG (max. 5MB cada)</small>
+        </div>
+      </div>
+      <button class="btn-primary full" onclick="showConfirmacao('resgate')"><i class="fa-solid fa-paper-plane"></i> Enviar solicitação de resgate</button>
+    </div>
+    <div class="form-footer-note">
+      <i class="fa-solid fa-shield-halved"></i>
+      Todas as informações são confidenciais e usadas apenas para o resgate.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ADOÇÃO ===================== -->
+<div class="page hidden" id="page-adocao">
+  <section class="adocao-hero">
+    <div class="adocao-hero-container">
+      <div class="adocao-hero-left">
+        <div class="hero-badge dark"><span class="badge-dot"></span> PROTEÇÃO ANIMAL ATIVA</div>
+        <h1 class="hero-title white">Um lar seguro<br>para quem<br><em>merece</em> <strong>amor</strong></h1>
+      </div>
+      <div class="adocao-hero-img d-none d-lg-block">
+        <img src="img/caoegato.png" alt="Pets" />
+      </div>
+      <div class="adocao-hero-search">
+        <h3>Encontre seu novo amigo</h3>
+        <div class="search-input-wrap">
+          <input type="text" placeholder="Buscar por nome ou espécie..." id="adocao-search" />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <select id="adocao-especie" onchange="filterAnimais()">
+          <option value="">Todas as espécies</option>
+          <option value="Cão">Cães</option>
+          <option value="Gato">Gatos</option>
+        </select>
+        <select id="adocao-idade" onchange="filterAnimais()">
+          <option value="">Todas as idades</option>
+          <option value="filhote">Filhote</option>
+          <option value="adulto">Adulto</option>
+          <option value="idoso">Idoso</option>
+        </select>
+        <button class="btn-primary full" onclick="showAllAnimais()">Buscar animais</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="adocao-lista">
+    <div class="adocao-lista-header">
+      <h2>Animais para adoção</h2>
+      <button class="btn-ver-todos" onclick="showAllAnimais()">Ver todos <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="animais-grid" id="animais-grid">
+    </div>
+  </section>
+</div>
+
+<!-- ===================== ADOÇÃO LISTA COMPLETA ===================== -->
+<div class="page hidden" id="page-adocao-lista">
+  <div class="page-content">
+    <div class="lista-header">
+      <div>
+        <h2>Animais para adoção</h2>
+        <p>Conheça os animais disponíveis para adoção responsável.</p>
+      </div>
+      <div class="lista-search-wrap">
+        <div class="search-input-wrap">
+          <input type="text" placeholder="Buscar por nome, espécie ou característica..." id="lista-search" oninput="renderListaAnimais()" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button class="btn-filtro" id="btn-filtro-toggle" onclick="toggleFiltroPanel()"><i class="fa-solid fa-sliders"></i> Filtros <span class="filtro-count hidden" id="filtro-count">0</span></button>
+      </div>
+    </div>
+
+    <!-- PAINEL DE FILTROS -->
+    <div class="filtro-panel hidden" id="filtro-panel">
+      <div class="filtro-panel-inner">
+        <div class="filtro-group">
+          <label class="filtro-label">Espécie</label>
+          <div class="filtro-chips" id="filtro-especie">
+            <button class="filtro-chip active" data-value="">Todas</button>
+            <button class="filtro-chip" data-value="Cão">🐶 Cão</button>
+            <button class="filtro-chip" data-value="Gato">🐱 Gato</button>
+          </div>
+        </div>
+        <div class="filtro-group">
+          <label class="filtro-label">Sexo</label>
+          <div class="filtro-chips" id="filtro-sexo">
+            <button class="filtro-chip active" data-value="">Todos</button>
+            <button class="filtro-chip" data-value="Macho">♂ Macho</button>
+            <button class="filtro-chip" data-value="Fêmea">♀ Fêmea</button>
+          </div>
+        </div>
+        <div class="filtro-group">
+          <label class="filtro-label">Porte</label>
+          <div class="filtro-chips" id="filtro-porte">
+            <button class="filtro-chip active" data-value="">Todos</button>
+            <button class="filtro-chip" data-value="Pequeno">Pequeno</button>
+            <button class="filtro-chip" data-value="Médio">Médio</button>
+            <button class="filtro-chip" data-value="Grande">Grande</button>
+          </div>
+        </div>
+        <div class="filtro-group">
+          <label class="filtro-label">Saúde</label>
+          <div class="filtro-chips" id="filtro-saude">
+            <button class="filtro-chip" data-value="vacinada">Vacinado(a)</button>
+            <button class="filtro-chip" data-value="castrada">Castrado(a)</button>
+            <button class="filtro-chip" data-value="vermifugada">Vermifugado(a)</button>
+          </div>
+        </div>
+        <div class="filtro-actions">
+          <button class="btn-limpar-filtros" onclick="limparFiltros()">Limpar filtros</button>
+          <button class="btn-aplicar-filtros" onclick="aplicarFiltros()">Aplicar filtros</button>
+        </div>
+      </div>
+    </div>
+    <div class="lista-tabs">
+      <button class="tab-btn active" data-filter="Todos" onclick="setTabFilter(this, 'Todos')">Todos</button>
+      <button class="tab-btn" data-filter="Cão" onclick="setTabFilter(this, 'Cão')">Caes</button>
+      <button class="tab-btn" data-filter="Gato" onclick="setTabFilter(this, 'Gato')">Gatos</button>
+    </div>
+    <div class="lista-grid-layout">
+      <div class="animais-lista-grid" id="animais-lista-grid">
+       
+      </div>
+      <div class="animal-detail-panel hidden" id="animal-detail-panel">
+        <div class="detail-panel-header">
+          <button class="btn-back-lista" onclick="closeDetailPanel()"><i class="fa-solid fa-arrow-left"></i> Voltar para a lista</button>
+          <button class="btn-close-panel" onclick="closeDetailPanel()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="detail-panel-content"></div>
+      </div>
+    </div>
+    <div class="pagination">
+      <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <span>...</span>
+      <button class="page-btn">8</button>
+      <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DENÚNCIA ===================== -->
+<div class="page hidden" id="page-denuncia">
+  <div class="page-content centered-form denuncia-bg">
+    <div class="denuncia-decorations">
+      <i class="fa-regular fa-heart deco-heart deco-1"></i>
+      <i class="fa-regular fa-heart deco-heart deco-2"></i>
+      <i class="fa-solid fa-paw deco-paw deco-3"></i>
+      <i class="fa-solid fa-paw deco-paw deco-4"></i>
+    </div>
+    <div class="form-center-header">
+      <div class="form-header-icon denuncia-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h2>Fazer denúncia</h2>
+      <p>Sua denúncia é muito importante para protegermos<br>os animais. Preencha os campos abaixo com o<br>máximo de informações possível.</p>
+    </div>
+
+    <div class="form-card wide">
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Seu nome (opcional)</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" placeholder="Digite seu nome" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Telefone para contato (opcional)</label>
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" placeholder="(11) 98765-4321" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Local da denúncia</label>
+        <div class="input-icon-wrap">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" placeholder="Rua, número, bairro, cidade, estado ou ponto de referência" />
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Tipo de denúncia</label>
+          <select>
+            <option value="">Selecione o tipo de denúncia</option>
+            <option>Maus-tratos</option>
+            <option>Abandono</option>
+            <option>Animal em risco</option>
+            <option>Tráfico de animais</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Descrição da situação</label>
+          <select>
+            <option value="">Selecione uma opção</option>
+            <option>Urgente</option>
+            <option>Moderado</option>
+            <option>Baixo risco</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Detalhes da denúncia</label>
+        <textarea placeholder="Descreva com o máximo de detalhes o que está acontecendo." maxlength="500" id="denuncia-desc"></textarea>
+        <div class="char-count"><span id="denuncia-count">0</span>/500</div>
+      </div>
+      <div class="form-group">
+        <label>Anexar fotos ou videos (opcional)</label>
+        <div class="upload-box">
+          <i class="fa-regular fa-image"></i>
+          <span>Clique para adicionar arquivos</span>
+          <small>Formatos: JPG, PNG, MP4 (max. 20MB)</small>
+        </div>
+      </div>
+      <button class="btn-primary full denuncia-btn" onclick="showConfirmacao('denuncia')"><i class="fa-solid fa-paper-plane"></i> Enviar denúncia</button>
+    </div>
+    <div class="form-footer-note">
+      <i class="fa-solid fa-lock"></i>
+      Todas as informações são confidenciais e usadas apenas para apuração da denúncia.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ACOMPANHAMENTO ===================== -->
+<div class="page hidden" id="page-acompanhamento">
+  <div class="page-content">
+    <div class="acomp-header">
+      <h2>Acompanhamento</h2>
+      <p>Acompanhe o andamento das suas solicitações.</p>
+    </div>
+    <div class="acomp-tabs">
+      <button class="tab-btn active" onclick="setAcompTab(this, 'Todas')">Todas</button>
+      <button class="tab-btn" onclick="setAcompTab(this, 'Resgate')">Resgates</button>
+      <button class="tab-btn" onclick="setAcompTab(this, 'Adocao')">Adoções</button>
+      <button class="tab-btn" onclick="setAcompTab(this, 'Denuncia')">Denúncias</button>
+      <button class="tab-btn" onclick="setAcompTab(this, 'Castracao')">Castrações</button>
+    </div>
+    <div class="acomp-filters">
+      <div class="filter-group">
+        <label>Período</label>
+        <div class="input-icon-wrap">
+          <input type="text" placeholder="dd/mm/aaaa - dd/mm/aaaa" />
+          <i class="fa-regular fa-calendar"></i>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>Tipo de solicitação</label>
+        <select>
+          <option>Todos</option>
+          <option>Resgate</option>
+          <option>Adoção</option>
+          <option>Denúncia</option>
+          <option>Castração</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Status</label>
+        <select>
+          <option>Todos</option>
+          <option>Em andamento</option>
+          <option>Concluído</option>
+          <option>Em análise</option>
+        </select>
+      </div>
+      <div class="filter-group search">
+        <div class="input-icon-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Buscar por protocolo ou local" />
+        </div>
+      </div>
+    </div>
+    <div class="acomp-list" id="acomp-list">
+     
+    </div>
+    <div class="pagination">
+      <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <span>...</span>
+      <button class="page-btn">6</button>
+      <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ACOMPANHAMENTO DETALHE ===================== -->
+<div class="page hidden" id="page-acomp-detalhe">
+  <div class="page-content centered-form">
+    <div class="form-center-header">
+      <div class="form-header-icon acomp-detail-icon">
+        <i class="fa-solid fa-clipboard-list"></i>
+      </div>
+      <h2>Acompanhamento</h2>
+      <p id="acomp-detalhe-subtitulo">Acompanhe o andamento da sua solicitação.</p>
+    </div>
+    <div class="form-card wide">
+      <div class="acomp-detail-top">
+        <img src="img/pata_azul.jpg" alt="Animal" class="acomp-detail-img acomp-detalhe-img" />
+        <div class="acomp-detail-info">
+          <div class="info-row">
+            <span class="info-label">Protocolo</span>
+            <span class="info-value protocol acomp-detalhe-protocolo">#AR2024-0007</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Solicitado em</span>
+            <span class="info-value acomp-detalhe-data">12/05/2024 às 14:32</span>
+          </div>
+        </div>
+        <div class="acomp-detail-info">
+          <div class="info-row">
+            <span class="info-label">Local</span>
+            <span class="info-value acomp-detalhe-local"><i class="fa-solid fa-location-dot"></i> Rua das Flores, 123<br>Vila Mariana, Sao Paulo-SP</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Descrição</span>
+            <span class="info-value acomp-detalhe-desc">Nossa equipe foi acionada e está verificando a situação.</span>
+          </div>
+        </div>
+        <div class="acomp-detail-info">
+          <div class="info-row">
+            <span class="info-label">Status atual</span>
+            <span class="status-badge andamento acomp-detalhe-status">Em andamento</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Responsável</span>
+            <span class="info-value"><i class="fa-regular fa-user"></i> Equipe de Resgate Arca</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline" id="acomp-timeline-dinamico">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CONFIRMAÇÃO ===================== -->
+<div class="page hidden" id="page-confirmacao">
+  <div class="page-content centered-form">
+    <div class="confirmacao-card">
+      <div class="confirmacao-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2 id="confirmacao-titulo">Resgate confirmado!</h2>
+      <p id="confirmacao-desc">Sua solicitação foi recebida com sucesso.<br>Nossa equipe já foi informada e entrará em ação o quanto antes.</p>
+
+      <div class="confirmacao-resumo" id="confirmacao-resgate-block">
+        <h3>Resumo da solicitação</h3>
+        <div class="resumo-card">
+          <img src="img/escudo.png" alt="Animal" id="resgate-confirm-img"/>
+          <div class="resumo-info">
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-calendar"></i><div><span>Data da solicitação</span><strong id="resgate-confirm-data">—</strong></div></div>
+              <div><i class="fa-solid fa-location-dot"></i><div><span>Local do resgate</span><strong id="resgate-confirm-local">—</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-solid fa-tag"></i><div><span>Protocolo</span><strong class="protocol" id="resgate-confirm-protocolo">—</strong></div></div>
+              <div><i class="fa-solid fa-paw"></i><div><span>Tipo de situação</span><strong id="resgate-confirm-tipo">—</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-user"></i><div><span>Solicitante</span><strong id="resgate-confirm-nome">—</strong></div></div>
+              <div><i class="fa-solid fa-triangle-exclamation"></i><div><span>Urgência</span><strong id="resgate-confirm-urgencia">—</strong></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="acomp-cta">
+          <div class="acomp-cta-text">
+            <i class="fa-solid fa-circle-info"></i>
+            <div><strong>Acompanhe o andamento da sua solicitação</strong><p>Você pode acompanhar todas as etapas do resgate na seção de Acompanhamento.</p></div>
+          </div>
+          <button class="btn-acomp" onclick="goToPage('acompanhamento')">Ir para acompanhamento <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="confirmacao-obrigado">
+          <i class="fa-solid fa-heart"></i>
+          <div><strong>Obrigado por fazer a diferença!</strong><p>Sua atitude ajuda a salvar vidas e a construir um mundo melhor para os animais.</p></div>
+        </div>
+      </div>
+
+      <div class="confirmacao-resumo hidden" id="confirmacao-adocao-block">
+        <h3>Resumo da solicitação</h3>
+        <div class="resumo-card">
+          <img src="img/pinscher.jpg" alt="Animal" />
+          <div class="resumo-info">
+            <div class="resumo-row">
+              <div><i class="fa-solid fa-paw"></i><div><span>Animal</span><strong>Luna</strong></div></div>
+              <div><i class="fa-solid fa-location-dot"></i><div><span>Local do animal</span><strong>Abrigo Arca-Unidade Vila Mariana<br>Sao Paulo-SP</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-calendar"></i><div><span>Data da solicitação</span><strong>12/05/2024 às 14:32</strong></div></div>
+              <div><i class="fa-solid fa-heart"></i><div><span>Tipo de adoção</span><strong>Adoção Responsável</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-user"></i><div><span>Adotante</span><strong>Maria Silva</strong></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="proximos-passos">
+          <i class="fa-solid fa-circle-info"></i>
+          <div><strong>Próximos passos</strong><p>Nossa equipe analisará suas informações e entrará em contato para os próximos passos da adoção</p></div>
+        </div>
+      </div>
+
+      <div class="confirmacao-resumo hidden" id="confirmacao-castracao-block">
+        <h3>Resumo da solicitação</h3>
+        <div class="resumo-card">
+          <img src="img/pata_azul.jpg" alt="Animal" id="cast-confirm-img" />
+          <div class="resumo-info">
+            <div class="resumo-row">
+              <div><i class="fa-solid fa-paw"></i><div><span>Animal</span><strong id="cast-confirm-nome">—</strong></div></div>
+              <div><i class="fa-solid fa-location-dot"></i><div><span>Local</span><strong id="cast-confirm-local">—</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-calendar"></i><div><span>Data da solicitação</span><strong id="cast-confirm-data">—</strong></div></div>
+              <div><i class="fa-regular fa-user"></i><div><span>Responsável</span><strong id="cast-confirm-resp">—</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-solid fa-tag"></i><div><span>Protocolo</span><strong id="cast-confirm-protocolo" class="protocol">—</strong></div></div>
+              <div><i class="fa-solid fa-paw"></i><div><span>Espécie / Porte</span><strong id="cast-confirm-especie">—</strong></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="proximos-passos">
+          <i class="fa-solid fa-circle-info"></i>
+          <div><strong>Próximos passos</strong><p id="cast-confirm-desc">Nossa equipe analisará suas informações e entrará em contato para os próximos passos da castração.</p></div>
+        </div>
+      </div>
+
+      <div class="confirmacao-resumo hidden" id="confirmacao-denuncia-block">
+        <h3>Resumo da solicitação</h3>
+        <div class="resumo-card">
+          <img src="img/denuncia.png" alt="Animal" />
+          <div class="resumo-info">
+            <div class="resumo-row">
+              <div><i class="fa-solid fa-paw"></i><div><span>Animal</span><strong>Qualquer</strong></div></div>
+              <div><i class="fa-solid fa-location-dot"></i><div><span>Local do animal</span><strong>Abrigo Arca-Unidade Vila Mariana<br>Sao Paulo-SP</strong></div></div>
+            </div>
+            <div class="resumo-row">
+              <div><i class="fa-regular fa-calendar"></i><div><span>Data da solicitação</span><strong>12/05/2024 às 14:32</strong></div></div>
+              <div><i class="fa-regular fa-user"></i><div><span>Adotante</span><strong>Anônimo</strong></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="proximos-passos">
+          <i class="fa-solid fa-circle-info"></i>
+          <div><strong>Próximos passos</strong><p>Nossa equipe analisará suas informações e entrará em contato para os próximos passos da denúncia</p></div>
+        </div>
+      </div>
+
+      <button class="btn-outline-home" onclick="goToPage('home')"><i class="fa-solid fa-house"></i> Voltar para a página inicial</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CADASTRO ===================== -->
+<div class="page hidden" id="page-cadastro">
+  <div class="login-layout">
+    <div class="login-left d-none d-md-flex">
+      <div class="login-left-content">
+        <div class="login-logo">
+          <img src="img/logo.png" alt="Programa Arca" style="height: 56px; width: auto;"/>
+        </div>
+        <h1 class="login-title">Faça parte<br>da nossa<br><em>missão</em></h1>
+        <p class="login-desc">Junte-se a milhares de pessoas que já ajudam animais em situação de risco. Crie sua conta e comece a fazer a diferença.</p>
+        <div class="login-pets-img">
+          <img src="img/caoegato.png" alt="Cachorro e Gato" />
+        </div>
+        <div class="login-hearts">
+          <i class="fa-solid fa-heart login-heart-icon"></i>
+          <i class="fa-regular fa-heart login-heart-icon small"></i>
+        </div>
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="login-card">
+
+        <!-- Logo visível só no mobile -->
+        <div class="d-flex d-md-none justify-content-center mb-3">
+          <img src="img/logo.png" alt="Programa Arca" style="height:48px;" />
+        </div>
+        <div class="login-card-icon">
+          <i class="fa-solid fa-paw"></i>
+        </div>
+        <h2>Criar conta</h2>
+        <p>Preencha os dados abaixo para se cadastrar.</p>
+        <div class="login-form">
+          <div class="form-group">
+            <label>Nome completo</label>
+            <div class="input-icon-wrap">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" placeholder="Seu nome completo" id="cad-nome" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <div class="input-icon-wrap">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" placeholder="seu@email.com" id="cad-email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <div class="input-icon-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Mínimo 6 caracteres" id="cad-senha" />
+              <i class="fa-regular fa-eye eye-toggle" id="toggle-cad-senha"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Confirmar senha</label>
+            <div class="input-icon-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Repita a senha" id="cad-senha2" />
+            </div>
+          </div>
+          <div id="cad-erro" style="display:none; color:#e53e3e; font-size:13px; background:#fff5f5; border:1px solid #fed7d7; border-radius:8px; padding:10px 12px;">
+            <i class="fa-solid fa-circle-exclamation"></i> <span id="cad-erro-msg"></span>
+          </div>
+          <div id="cad-ok" style="display:none; color:#1a7a45; font-size:13px; background:#e6f9ee; border:1px solid #9ae6b4; border-radius:8px; padding:10px 12px;">
+            <i class="fa-solid fa-circle-check"></i> Conta criada com sucesso! Redirecionando...
+          </div>
+          <div class="login-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="cad-termos" /> Aceito os <a href="#" style="color:var(--teal)">termos de uso</a>
+            </label>
+          </div>
+          <button class="btn-primary full" onclick="fazerCadastro()">Criar conta</button>
+          <p class="login-register">Já tem uma conta? <a href="#" onclick="goToPage('login')" style="color:var(--teal);font-weight:700;">Entrar</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="img/logo.png" alt="Programa Arca" style="height: 40px; width: auto;" />
+    </div>
+    <p class="footer-slogan">Juntos, somos a segunda chance que eles precisam.</p>
+    <div class="footer-social">
+      <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===================== ESQUECI SENHA ===================== -->
+<div id="modal-esqueci" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.45); align-items:center; justify-content:center; padding: 16px;">
+  <div style="background:white; border-radius:16px; padding:36px 32px; max-width:400px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.2); position:relative;">
+    <button onclick="fecharEsqueciSenha()" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:20px; color:#aaa; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+    <div style="text-align:center; margin-bottom:20px;">
+      <div style="width:56px; height:56px; background:#e8f4fd; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+        <i class="fa-solid fa-lock" style="color:#1a6b8a; font-size:22px;"></i>
+      </div>
+      <h3 style="font-size:20px; font-weight:800; color:#1e3f7a; margin-bottom:6px;">Esqueceu sua senha?</h3>
+      <p style="font-size:13px; color:#888;">Digite seu e-mail e enviaremos um link para redefinir sua senha.</p>
+    </div>
+    <div id="esqueci-step-1">
+      <div style="margin-bottom:16px;">
+        <label style="font-size:12px; font-weight:700; color:#444; display:block; margin-bottom:6px;">E-mail cadastrado</label>
+        <div style="display:flex; align-items:center; border:1.5px solid #e2e8f0; border-radius:8px; padding:0 12px; gap:8px;">
+          <i class="fa-regular fa-envelope" style="color:#aaa;"></i>
+          <input type="email" id="esqueci-email" placeholder="seu@email.com" style="border:none; outline:none; padding:10px 0; width:100%; font-size:14px;" />
+        </div>
+      </div>
+      <div id="esqueci-erro" style="display:none; color:#e53e3e; font-size:13px; background:#fff5f5; border:1px solid #fed7d7; border-radius:8px; padding:10px 12px; margin-bottom:12px;">
+        <i class="fa-solid fa-circle-exclamation"></i> E-mail não encontrado. Verifique e tente novamente.
+      </div>
+      <button onclick="enviarRecuperacao()" style="width:100%; background:#1e3f7a; color:white; border:none; border-radius:8px; padding:12px; font-size:15px; font-weight:700; cursor:pointer;">Enviar link de recuperação</button>
+    </div>
+    <div id="esqueci-step-2" style="display:none; text-align:center;">
+      <div style="width:56px; height:56px; background:#e6f9ee; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+        <i class="fa-solid fa-paper-plane" style="color:#1a7a45; font-size:22px;"></i>
+      </div>
+      <h4 style="font-size:17px; font-weight:800; color:#1e3f7a; margin-bottom:8px;">E-mail enviado!</h4>
+      <p style="font-size:13px; color:#666; margin-bottom:20px;">Verifique sua caixa de entrada e siga as instruções para redefinir sua senha.</p>
+      <p id="esqueci-email-enviado" style="font-size:13px; font-weight:700; color:#1a6b8a; margin-bottom:20px;"></p>
+      <button onclick="fecharEsqueciSenha()" style="width:100%; background:#1e3f7a; color:white; border:none; border-radius:8px; padding:12px; font-size:15px; font-weight:700; cursor:pointer;">Voltar ao login</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
